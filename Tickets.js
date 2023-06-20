@@ -1,75 +1,86 @@
-const Nombre = document.getElementById("nombre");
-const Apellido = document.getElementById("apellido");
-const btn_resumen = document.getElementById("btn-resumen");
-const Email = document.getElementById("email")
-const ExpresionRegularEmail = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,4})+$/;
+
+const nombre = document.getElementById("nombre");
+const apellido = document.getElementById("apellido");
+const botonResumen = document.getElementById("resumen");
+const email = document.getElementById("email");
+const botonBorrar = document.getElementById("btn_borrar");
+const expresionRegularEmail = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,4})+$/;
 
 form.addEventListener('submit', (e) =>{
     e.preventDefault();
 })
-
-function validate_name (){
-    if (Nombre.value.length < 3 ){
-        document.getElementById("error_name").innerHTML = "El nombre ingresado es inválido"        
+/* validacion para el nombre */
+function validarNombre (){
+    if (nombre.value.length<3 ){
+        document.getElementById("error_name").innerHTML= "El nombre ingresado es inválido"        
     }
     else {
-        document.getElementById("error_name").innerHTML = "El nombre ingresado es válido"
+        document.getElementById("error_name").innerHTML= "El nombre ingresado es válido"
     }
 }
+botonResumen.addEventListener("click", validarNombre);
 
-btn_resumen.addEventListener("click", validate_name);
-
-function validate_last_name () {
-    if (Apellido.value.length < 2) {
-        document.getElementById("error_last_name").innerHTML = "El apellido ingresado es inválido"
+/* validacion para el apellido */
+function validarApellido () {
+    if (apellido.value.length < 3) {
+        document.getElementById("error_last_name").innerHTML= "El apellido ingresado es inválido"
     } else {
-        document.getElementById("error_last_name").innerHTML = "El apellido ingresado es válido"
+        document.getElementById("error_last_name").innerHTML= "El apellido ingresado es válido"
     }
 }
-btn_resumen.addEventListener("click", validate_last_name);
+botonResumen.addEventListener("click", validarApellido);
 
+/* validacion para el email */
 function validate_email (){
-    if (!ExpresionRegularEmail.test(Email.value)){
-        document.getElementById("error_email").innerHTML = "El correo ingresado es inválido"
+    if (!expresionRegularEmail.test(email.value)){
+        document.getElementById("error_email").innerHTML= "El correo ingresado es inválido"
     } else {
-        document.getElementById("error_email").innerHTML = "El correo ingresado es válido"
+        document.getElementById("error_email").innerHTML= "El correo ingresado es válido"
     }
 }
+
+botonResumen.addEventListener("click", validate_email );
+
+/* creo variables para calcular el total en cada tipo de entrada*/
 
 let valorEntrada = 200;
-let cantidadEntradas = document.getElementById("cantidad_compra");
+let cantidadEntradas = document.getElementById("cantidadCompra");
 let seleccionDescuento = document.getElementById("select_descuento");
 
-function calcular_total() {
+/* creo la funcion que realiza el calculo para cada tipo de ticket*/
+
+function calcularTotal() {
     switch (seleccionDescuento.value) {
     case "1":
-        valorEntrada = valorEntrada * 0.2 * cantidadEntradas.value;
-        document.getElementById('total_a_pagar').innerHTML = "Total a pagar: $" + valorEntrada;
+        valorEntrada = 200 * 0.2 * cantidadEntradas.value;
+        document.getElementById('total_a_pagar').innerHTML= "Total a pagar: $" + valorEntrada;
         break;
     case "2":
         valorEntrada = 200 * 0.5 * cantidadEntradas.value;
-        document.getElementById('total_a_pagar').innerHTML = "Total a pagar: $" + valorEntrada;
+        document.getElementById('total_a_pagar').innerHTML= "Total a pagar: $" + valorEntrada;
         break;
     case "3":
         valorEntrada = 200 * 0.85 * cantidadEntradas.value;
-        document.getElementById('total_a_pagar').innerHTML = "Total a pagar: $" + valorEntrada;
+        document.getElementById('total_a_pagar').innerHTML= "Total a pagar: $" + valorEntrada;
         break;
+        
     case "4":
         valorEntrada = 200 * cantidadEntradas.value;
-        document.getElementById('total_a_pagar').innerHTML = "Total a pagar: $" + valorEntrada;
+        document.getElementById('total_a_pagar').innerHTML= "Total a pagar: $" + valorEntrada;
         break;
         default:
+
             break;
+        }
 
      }
 
-     btn_resumen.addEventListener("click", calcular_total);
+     botonResumen.addEventListener("click", calcularTotal);
 
      function borrar_total(){
         document.getElementById('total_a_pagar').innerHTML = "Total a pagar: $" ;
      }
 
-     btn_borrar.addEventListener("click", borrar_total);
+     botonBorrar.addEventListener("click", borrar_total);
 
     
-}

@@ -19,6 +19,7 @@
     <link rel="stylesheet" href="/node_modules/bootstrap/dist/js/bootstrap.min.js">
 
     <!-- bootstrap -->
+    <link rel="stylesheet" href="/styles.css">
     <link rel="stylesheet" href="bootstrap-5.3.0-alpha3-dist/bootstrap-5.3.0-alpha3-dist/css/bootstrap.css">
     <link rel="stylesheet" href="bootstrap-5.3.0-alpha3-dist/bootstrap-5.3.0-alpha3-dist/js/bootstrap.js">
     <link rel="stylesheet" href="node_modules/bootstrap-icons/bootstrap-icons.svg">
@@ -63,8 +64,7 @@
                                 <a class="nav-link" href="#seccionConviertete">Conviértete en orador</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link link-success" data-bs-toggle="modal"
-                                    data-bs-target="#exampleModal"><i
+                                <a class="nav-link link-success" data-bs-toggle="modal" data-bs-target="#exampleModal"><i
                                         class="bi bi-cash-stack"></i>&nbsp;<!--Espacio sin ruptura-->Comprar tickets</a>
 
                             </li>
@@ -119,27 +119,28 @@
 
     <section class="container-md">
         <form action="" id="form" class="row">
-            <div class="col-xl-6 col-lg-6 col-md-6 mb-3">
+            <div class="col-xl-6 col-lg-6 col-md-6 ">
                 <input placeholder="Nombre" type="text" class="form-control" aria-label="Nombre" id="nombre"
-                    aria-describedby="nameHelp" pattern="[a-zA-Z]+">
+                    aria-describedby="nameHelp" required pattern="[a-zA-Z]+">
                 <p id="error_name"></p>
             </div>
             <div class="col-xl-6 col-lg-6 col-md-6">
-                <input placeholder="Apellido" type="text" class="form-control" aria-label="Nombre" id="apellido">
+                <input placeholder="Apellido" type="text" class="form-control" aria-label="Nombre" id="apellido"
+                    required>
                 <p id="error_last_name"></p>
             </div>
-            <div class="col-12 mb-3">
-                <input placeholder="Correo" type="email" class="form-control" aria-label="Email" id="email">
+            <div class="col-12 ">
+                <input placeholder="Correo" type="email" class="form-control" aria-label="Email" id="email" required>
                 <p id="error_email"></p>
             </div>
             <div class="col-xl-6 col-lg-6 col-md-6 mb-3">
-                <label for="Cantidad" class="form-label">Cantidad</label>
-                <input type="number" class="form-control" id="cantidad_compra" placeholder="Cantidad">
+                <label class="form-label">Cantidad</label>
+                <input id="cantidadCompra" type="text" class="form-control" placeholder="Cantidad" aria-label="Cantidad" required pattern="[0-9]+">
             </div>
             <div class="col-xl-6 col-lg-6 col-md-6 mb-3">
-                <label for="exampleFormControlInput2" class="form-label">Categoria</label>
+                <label class="form-label">Categoria</label>
                 <select id="select_descuento" class="form-select" aria-label="Default select example">
-                    <option selected>Seleccion de Descuento</option>
+                    <option selected>Elige tu entrada</option>
                     <option value="1">Estudiante</option>
                     <option value="2">Trainee</option>
                     <option value="3">junior</option>
@@ -147,15 +148,18 @@
                 </select>
             </div>
             <div class="col-12">
-                <input class="form-control p-3 mb-2 bg-info-subtle text-emphasis-info" type="text" value="Total a pagar: $"
-                    aria-label="Disabled input example" disabled readonly>
+                <p id="total_a_pagar" class="pt-3 pb-3 p-3 bg-info-subtle fw-semibold text-dark border-primary-subtle"> Total a pagar:$</p>
+                <!-- <input id="total_a_pagar" class="form-control p-3 mb-2 bg-info-subtle text-emphasis-info" type="text"
+                    value="Total a pagar: $" aria-label="Disabled input example" disabled readonly> -->
+            </div>
+            <div class="row g-2 p-1 pt-2">
+                <div class="col px-2 mb-2">
+                    <button id="btn_borrar" type="button" class="col btn btn-success btn-lg w-100" >Borrar</button>
                 </div>
-                <input class="btn btn-primary" type="submit" value="Submit">
-<input class="btn btn-primary" type="reset" value="Reset">
-            
-            <button type="button" class="btn btn-primary btn-lg">Borrar</button>
-            <button type="button" class="btn btn-secondary btn-lg">Resumen</button>
-            
+                <div class="col">
+                    <button id="resumen" type="submit" class="col btn btn-success btn-lg w-100">Resumen</button>
+                </div>
+            </div>
         </form>
     </section>
 
@@ -197,7 +201,7 @@
 
     <script src="/node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
 
-    <script src="bootstrap-5.3.0-alpha3-dist/bootstrap-5.3.0-alpha3-dist/js/bootstrap.min.js"></script>
+    <script src="bootstrap-5.3.0-alpha3-dist/bootstrap-5.3.0-alpha3-dist/js/bootstrap.bundle.js"></script>
 </body>
 
 </html>
