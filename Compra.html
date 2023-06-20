@@ -13,16 +13,11 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;900&display=swap" rel="stylesheet">
 
-    <!--node_modules-->
-    <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/node_modules/bootstrap-icons/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="/node_modules/bootstrap/dist/js/bootstrap.min.js">
-
     <!-- bootstrap -->
     <link rel="stylesheet" href="/styles.css">
     <link rel="stylesheet" href="bootstrap-5.3.0-alpha3-dist/bootstrap-5.3.0-alpha3-dist/css/bootstrap.css">
     <link rel="stylesheet" href="bootstrap-5.3.0-alpha3-dist/bootstrap-5.3.0-alpha3-dist/js/bootstrap.js">
-    <link rel="stylesheet" href="node_modules/bootstrap-icons/bootstrap-icons.svg">
+    <link rel="stylesheet" href="bootstrap-icons/font/bootstrap-icons.css">
 
 
     <title>comprarTicket</title>
@@ -129,13 +124,15 @@
                     required>
                 <p id="error_last_name"></p>
             </div>
-            <div class="col-12 ">
-                <input placeholder="Correo" type="email" class="form-control" aria-label="Email" id="email" required>
+            <div class="input-group col-12 mb-2">
+                <span class="input-group-text" id="basic-addon1"><i class="bi bi-envelope-at"></i></span>
+                <input  placeholder="Correo" type="email" class="form-control" aria-label="Email" id="email" required aria-describedby="basic-addon1">
                 <p id="error_email"></p>
+                
             </div>
             <div class="col-xl-6 col-lg-6 col-md-6 mb-3">
                 <label class="form-label">Cantidad</label>
-                <input id="cantidadCompra" type="text" class="form-control" placeholder="Cantidad" aria-label="Cantidad" required pattern="[0-9]+">
+                <input id="cantidadCompra" type="number" class="form-control" placeholder="Cantidad" aria-label="Cantidad" required pattern="[0-9]+">
             </div>
             <div class="col-xl-6 col-lg-6 col-md-6 mb-3">
                 <label class="form-label">Categoria</label>

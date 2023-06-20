@@ -15,7 +15,7 @@ function validarNombre (){
         document.getElementById("error_name").innerHTML= "El nombre ingresado es inválido"        
     }
     else {
-        document.getElementById("error_name").innerHTML= "El nombre ingresado es válido"
+        document.getElementById("error_name").innerHTML= "El nombre ingresado es válido "
     }
 }
 botonResumen.addEventListener("click", validarNombre);
