@@ -1,45 +1,41 @@
+const form = document.getElementById('form');
+ form.addEventListener('submit', (e) =>{
+    e.preventDefault();
+ });
 
+/*Variables*/
 const nombre = document.getElementById("nombre");
 const apellido = document.getElementById("apellido");
-const botonResumen = document.getElementById("resumen");
 const email = document.getElementById("email");
+const cantidad = document.getElementById("cantidadCompra");
+const descuento = document.getElementById("select_descuento")
+const botonResumen = document.getElementById("resumen");
 const botonBorrar = document.getElementById("btn_borrar");
+
+/* Variables regulares*/
+const expRegText = /^\s+$/;
 const expresionRegularEmail = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,4})+$/;
 
-form.addEventListener('submit', (e) =>{
-    e.preventDefault();
-})
-/* validacion para el nombre */
-function validarNombre (){
-    if (nombre.value.length<3 ){
-        document.getElementById("error_name").innerHTML= "El nombre ingresado es inválido"        
-    }
-    else {
-        document.getElementById("error_name").innerHTML= "El nombre ingresado es válido "
-    }
-}
-botonResumen.addEventListener("click", validarNombre);
+// Example starter JavaScript for disabling form submissions if there are invalid fields
+(function() {
+    'use strict';
+    window.addEventListener('load', function(){
+        // Fetch all the forms we want to apply custom Bootstrap validation styles to
+        var forms = document.getElementsByClassName('needs-validation');
+          // Loop over them and prevent submission
 
-/* validacion para el apellido */
-function validarApellido () {
-    if (apellido.value.length < 3) {
-        document.getElementById("error_last_name").innerHTML= "El apellido ingresado es inválido"
-    } else {
-        document.getElementById("error_last_name").innerHTML= "El apellido ingresado es válido"
-    }
-}
-botonResumen.addEventListener("click", validarApellido);
-
-/* validacion para el email */
-function validate_email (){
-    if (!expresionRegularEmail.test(email.value)){
-        document.getElementById("error_email").innerHTML= "El correo ingresado es inválido"
-    } else {
-        document.getElementById("error_email").innerHTML= "El correo ingresado es válido"
-    }
-}
-
-botonResumen.addEventListener("click", validate_email );
+        var validation = Array.prototype.filter.call(forms, function(form){
+            form.addEventListener('submit', function(event){
+                if (form.checkValidity() === false){
+                    event.preventDefault();
+                    event.stopPropagation();
+                }
+                form.classList.add('was-validated');
+            }, false);
+        });
+        }, false);
+  
+    })();
 
 /* creo variables para calcular el total en cada tipo de entrada*/
 
@@ -78,9 +74,7 @@ function calcularTotal() {
      botonResumen.addEventListener("click", calcularTotal);
 
      function borrar_total(){
-        document.getElementById('total_a_pagar').innerHTML = "Total a pagar: $" ;
+        document.getElementById('total_a_pagar').innerHTML = "Total a pagar:$" ;
      }
 
      botonBorrar.addEventListener("click", borrar_total);
-
-    

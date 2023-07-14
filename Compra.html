@@ -111,39 +111,46 @@
         <h3>VENTA</h3>
         <h1 class="fw-semibold">VALOR DE TICKET $200</h1>
     </section>
-
     <section class="container-md">
-        <form action="" id="form" class="row">
-            <div class="col-xl-6 col-lg-6 col-md-6 ">
+        <form action="" id="form" class="row needs-validation" novalidate>
+            <div class="col-xl-6 col-lg-6 col-md-6 mb-3">
                 <input placeholder="Nombre" type="text" class="form-control" aria-label="Nombre" id="nombre"
                     aria-describedby="nameHelp" required pattern="[a-zA-Z]+">
-                <p id="error_name"></p>
+                    <div class="valid-feedback">¡OK Valido!</div>
+                    <div class="invalid-feedback">Complete el campo.</div>
             </div>
-            <div class="col-xl-6 col-lg-6 col-md-6">
+            <div class="col-xl-6 col-lg-6 col-md-6 mb-3">
                 <input placeholder="Apellido" type="text" class="form-control" aria-label="Nombre" id="apellido"
                     required>
-                <p id="error_last_name"></p>
+                    <div class="valid-feedback">¡OK Valido!</div>
+                    <div class="invalid-feedback">Complete el campo.</div>
             </div>
             <div class="input-group col-12 mb-2">
                 <span class="input-group-text" id="basic-addon1"><i class="bi bi-envelope-at"></i></span>
                 <input  placeholder="Correo" type="email" class="form-control" aria-label="Email" id="email" required aria-describedby="basic-addon1">
-                <p id="error_email"></p>
+                <div class="valid-feedback">¡OK Valido!</div>
+                    <div class="invalid-feedback">Complete el campo.</div>
                 
             </div>
             <div class="col-xl-6 col-lg-6 col-md-6 mb-3">
                 <label class="form-label">Cantidad</label>
-                <input id="cantidadCompra" type="number" class="form-control" placeholder="Cantidad" aria-label="Cantidad" required pattern="[0-9]+">
+                <input id="cantidadCompra" type="number" min="1" pattern="^[1-9]\d*$"  class="form-control" placeholder="Cantidad" aria-label="Cantidad" required pattern="[0-9]+">
+                <div class="valid-feedback">¡OK Valido!</div>
+                    <div class="invalid-feedback">Ingrese cantidad valida</div>
             </div>
             <div class="col-xl-6 col-lg-6 col-md-6 mb-3">
                 <label class="form-label">Categoria</label>
-                <select id="select_descuento" class="form-select" aria-label="Default select example">
-                    <option selected>Elige tu entrada</option>
+                <select id="select_descuento" class="form-select" aria-label="Default select example" required>
+                    <option selected disabled value="">Elige tu entrada</option>
                     <option value="1">Estudiante</option>
                     <option value="2">Trainee</option>
                     <option value="3">junior</option>
                     <option value="4">Sin descuento</option>
                 </select>
             </div>
+                <div class="invalid-feedback">
+                    Elija un tipo de entrada.
+                  </div>
             <div class="col-12">
                 <p id="total_a_pagar" class="pt-3 pb-3 p-3 bg-info-subtle fw-semibold text-dark border-primary-subtle"> Total a pagar:$</p>
                 <!-- <input id="total_a_pagar" class="form-control p-3 mb-2 bg-info-subtle text-emphasis-info" type="text"
@@ -151,7 +158,7 @@
             </div>
             <div class="row g-2 p-1 pt-2">
                 <div class="col px-2 mb-2">
-                    <button id="btn_borrar" type="button" class="col btn btn-success btn-lg w-100" >Borrar</button>
+                    <button id="btn_borrar" type="reset" class="col btn btn-success btn-lg w-100" value="Reset">Borrar</button>
                 </div>
                 <div class="col">
                     <button id="resumen" type="submit" class="col btn btn-success btn-lg w-100">Resumen</button>
